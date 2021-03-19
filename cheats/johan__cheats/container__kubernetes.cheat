@@ -6,5 +6,8 @@ bash -c "while true; do clear; kubectl get pod -n <namespace>; sleep 5s; done"
 # Get pod logs from namespace
 kubectl logs <pod_name> -n <namespace> -c user-container
 
+# Kill pod from namespace (background)
+kubectl delete pod <pod_name> -n <namespace> &
+
 $ namespace: kubectl get namespaces | awk 'NR!=1 {print $1}'
 $ pod_name: kubectl get pods -n <namespace> | awk 'NR!=1 {print $1}'
