@@ -1,0 +1,6 @@
+% node, nx
+
+# Run serve nx service
+npx nx serve <nxservices-serve>
+
+$ nxservices-serve: cat workspace.json | jq '.projects | to_entries[] | select(.value.architect.serve!=null) | .key'
