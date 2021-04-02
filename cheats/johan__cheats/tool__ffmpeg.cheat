@@ -1,0 +1,10 @@
+% tool, ffmpeg
+
+# Compress and convert video
+ffmpeg -i '<ask_input>' -c:v <cvideo> -preset veryfast -c:a <caudio> '<ask_output>'
+
+; $ ask_input: echo $(read -e -p 'Input file: ')
+; $ ask_output: echo $(read -e -p 'Output file: ')
+$ ask_input: fd .
+$ cvideo: echo 'libx264 libx265 libvpx-vp9' | tr ' ' '\n'
+$ caudio: echo 'aac mp2 mp3' | tr ' ' '\n'
