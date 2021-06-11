@@ -1,0 +1,9 @@
+% tool, git
+
+# Get remote branch
+echo <remote-branch>
+
+# Checkout remote branch
+git checkout <remote-branch>
+
+$ remote-branch: git branch -r | sed 's/[[:blank:]]*origin\///g' | grep --invert-match '^HEAD'
