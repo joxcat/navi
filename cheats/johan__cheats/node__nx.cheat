@@ -1,17 +1,14 @@
 % node, nx
 
 # Run serve nx service
-npx nx serve <nxservices-serve>
+npx nx serve <nxservices_serve>
 
 # Run serve nx with recover on die and lot of memory
-while true; do NODE_OPTIONS="--max-old-space-size=<memory>" npx nx --memoryLimit=<memory> serve <nxservices-serve>; done
+while true; do NODE_OPTIONS="--max-old-space-size=<memory>" npx nx --memoryLimit=<memory> serve <nxservices_serve>; done
 
 # Run npm-run-all scripts
-echo <script-query>
+yarn run npm-run-all <script_query>
 
-# overr
-echo <with_overrides>
-
-$ nxservices-serve: cat workspace.json | jq '.projects | to_entries[] | select(.value.architect.serve!=null) | .key'
+$ nxservices_serve: cat workspace.json | jq '.projects | to_entries[] | select(.value.architect.serve!=null) | .key'
 $ memory: echo '8192 4096 2048 1024' | tr ' ' '\n'
-$ script-query: cat package.json | jq '.scripts | to_entries[] | .key' | sed 's/"//g' --- --fzf-overrides '--print-query'
+$ script_query: cat package.json | jq '.scripts | to_entries[] | .key' | sed -E 's/:[a-z]+/:*/g' | sed 's/"//g' | sort -u
