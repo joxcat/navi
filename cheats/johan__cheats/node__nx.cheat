@@ -7,7 +7,7 @@ npx nx serve <nxservices_serve>
 while true; do NODE_OPTIONS="--max-old-space-size=<memory>" npx nx --memoryLimit=<memory> serve <nxservices_serve>; done
 
 # Run npm-run-all scripts
-yarn run npm-run-all <script_query>
+yarn run npm-run-all -c "<script_query>"
 
 $ nxservices_serve: cat workspace.json | jq '.projects | to_entries[] | select(.value.architect.serve!=null) | .key'
 $ memory: echo '8192 4096 2048 1024' | tr ' ' '\n'
