@@ -1,0 +1,10 @@
+% docker
+
+# Shell in docker using exec
+docker exec -it <running_container_name> <shell>
+
+# Stopping container
+docker stop <running_container_name>
+
+$ running_container_name: docker ps --- --headers 1 --column 7
+$ shell: echo '/bin/sh /bin/bash' | tr ' ' '\n'
