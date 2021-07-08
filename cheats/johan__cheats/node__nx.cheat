@@ -1,7 +1,7 @@
 % node, nx
 
 # Run serve nx service
-npx nx serve <nxservices_serve>
+port=<port> npx nx serve <nxservices_serve> --port=<port>
 
 # Run serve nx with recover on die and lot of memory
 while true; do NODE_OPTIONS="--max-old-space-size=<memory>" npx nx --memoryLimit=<memory> serve <nxservices_serve>; done
