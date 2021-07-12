@@ -6,9 +6,12 @@ port=<port> npx nx serve <nxservices_serve> --port=<port>
 # Run serve nx with recover on die and lot of memory
 while true; do NODE_OPTIONS="--max-old-space-size=<memory>" npx nx --memoryLimit=<memory> serve <nxservices_serve>; done
 
+$ nxservices_serve: cat workspace.json | jq '.projects | to_entries[] | select(.value.architect.serve!=null) | .key'
+$ memory: echo '8192 4096 2048 1024' | tr ' ' '\n'
+
+% node, yarn
+
 # Run npm-run-all scripts
 yarn run npm-run-all -c "<script_query>"
 
-$ nxservices_serve: cat workspace.json | jq '.projects | to_entries[] | select(.value.architect.serve!=null) | .key'
-$ memory: echo '8192 4096 2048 1024' | tr ' ' '\n'
 $ script_query: cat package.json | jq '.scripts | to_entries[] | .key' | sed -E 's/:[a-z]+/:*/g' | sed 's/"//g' | sort -u
