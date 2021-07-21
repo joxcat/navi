@@ -1,12 +1,13 @@
 % node, nx
 
 # Run serve nx service
-port=<port> npx nx serve <nxservices_serve> --port=<port>
+port=<port> npx nx serve <nxservices_serve> --port=<port_more>
 
 # Run serve nx with recover on die and lot of memory
 while true; do NODE_OPTIONS="--max-old-space-size=<memory>" npx nx --memoryLimit=<memory> serve <nxservices_serve>; done
 
 $ nxservices_serve: cat workspace.json | jq '.projects | to_entries[] | select(.value.architect.serve!=null) | .key'
+$ port_more: echo "<port>+1000" | bc
 $ memory: echo '8192 4096 2048 1024' | tr ' ' '\n'
 
 % node, yarn
