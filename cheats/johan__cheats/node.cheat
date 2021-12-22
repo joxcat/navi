@@ -12,6 +12,9 @@ $ memory: echo '8192 4096 2048 1024' | tr ' ' '\n'
 
 % node, yarn
 
+# NPM run scripts
+npm run "<script_query>"
+
 # Run npm-run-all scripts
 yarn run npm-run-all -c "<script_query>"
 
